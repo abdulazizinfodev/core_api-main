@@ -22,7 +22,7 @@ WORKDIR /code
 COPY ./staticfiles /app/staticfiles
 COPY ./mediafiles /app/mediafiles
 
-EXPOSE 80
+EXPOSE 8000
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
