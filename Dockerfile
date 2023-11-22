@@ -17,8 +17,8 @@ COPY ./requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt && rm -r /tmp/requirements.txt
 
 COPY . /code
-WORKDIR /code
-COPY ./path/to/your/settings.py /code/yourproject/settings.py
+COPY ./settings.py /code/yourproject/settings.py
+
 RUN python manage.py migrate --noinput
 RUN python manage.py collectstatic --noinput
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
