@@ -5,6 +5,9 @@ services:
     build: .
     ports:
       - "8000:8000"
+    volumes:
+      - ./staticfiles:/code/staticfiles
+      - ./path/to/your/media:/path/to/your/media/directory
 
   nginx:
     image: nginx:latest
@@ -14,6 +17,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./staticfiles:/code/staticfiles
     depends_on:
       - django
 

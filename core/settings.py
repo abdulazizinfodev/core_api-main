@@ -113,13 +113,13 @@ USE_TZ = True
 
 # STATIC
 
-STATIC_ROOT = str(BASE_DIR / "static")
-STATIC_URL = "/static/"
+# settings.py
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# MEDIA
-MEDIA_ROOT = str(BASE_DIR / "media")
-MEDIA_URL = "/media/"
 
 
 REST_FRAMEWORK = {
