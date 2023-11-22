@@ -1,3 +1,0 @@
-FROM nginx:1.19.0-alpine
-
-COPY ./defaut.conf /etc/nginx/conf.d/defaut.conf
