@@ -148,21 +148,21 @@ SIMPLE_JWT = {
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
-    'http://209.38.244.21/',
+    'http://209.38.244.21',
     'http://127.0.0.1:5173',
     # 'https://example.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
-    'http://209.38.244.21/',
+    'http://209.38.244.21',
     'http://127.0.0.1:5173',
     # 'https://example.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'http://209.38.244.21/',
+    'http://209.38.244.21',
     'http://127.0.0.1:5173',
     # 'https://example.com',
 ]
