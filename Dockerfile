@@ -19,5 +19,7 @@ RUN pip3 install -r /tmp/requirements.txt && rm -r /tmp/requirements.txt
 COPY . /code
 WORKDIR /code
 
+ENTRYPOINT ["sh", "/entrypoint.sh"]
+
 CMD ["bash"]
 

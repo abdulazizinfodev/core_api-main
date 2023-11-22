@@ -6,8 +6,18 @@ services:
     command: bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./your-django-app:/app
+      - static:/static
     ports:
       - "8000:8000"
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - web
 
   bot:
     container_name: bot
@@ -16,3 +26,6 @@ services:
     build:
       context: "."
       dockerfile: Dockerfile
+
+volumes:
+  static:
