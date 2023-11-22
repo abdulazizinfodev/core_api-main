@@ -24,7 +24,7 @@ COPY ./mediafiles /app/mediafiles
 
 EXPOSE 80
 
-RUN python manage.py migrate --noinput
-RUN python manage.py collectstatic --noinput
+RUN python manage.py migrate
+RUN python manage.py collectstatic 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
