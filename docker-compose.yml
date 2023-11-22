@@ -9,7 +9,7 @@ services:
       - "8000:8000"
     volumes:
       - ./staticfiles:/code/staticfiles
-      - ./core:/app
+      - ./mediafiles:/app/mediafiles
 
   nginx:
     image: nginx:latest
