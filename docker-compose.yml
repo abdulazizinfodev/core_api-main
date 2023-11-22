@@ -9,7 +9,7 @@ services:
       - "8000:8000"
     volumes:
       - ./staticfiles:/code/staticfiles
-      - ./mediafiles:/app/mediafiles
+      - ./mediafiles:/code/mediafiles
 
   nginx:
     image: nginx:latest
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./staticfiles:/code/staticfiles
-      - ./core:/app
+      - ./mediafiles:/code/mediafiles
     depends_on:
       - django
 
