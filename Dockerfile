@@ -17,7 +17,7 @@ COPY ./requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt && rm -r /tmp/requirements.txt
 
 COPY . /code
-COPY ./core/settings.py /code/yourproject/settings.py
+WORKDIR /code
 
 RUN python manage.py migrate --noinput
 RUN python manage.py collectstatic --noinput
