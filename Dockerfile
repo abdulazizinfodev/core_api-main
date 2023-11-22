@@ -25,6 +25,6 @@ COPY ./mediafiles /app/mediafiles
 RUN python manage.py migrate --noinput
 RUN python manage.py collectstatic --noinput
 
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["supervisord", "-c", "supervisord.conf"]
