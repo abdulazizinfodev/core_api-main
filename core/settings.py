@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-u+z1ng(w_!jc07a1&_wj45(rik78v0*wl3s6&logblm0%hmh8e"
 
-DEBUG = True
+DEBUG = False
 
-DOMAIN = "http://127.0.0.1:8000"
+DOMAIN = "http://209.38.244.21/"
 
 
 ALLOWED_HOSTS = ["*"]
@@ -148,24 +148,21 @@ SIMPLE_JWT = {
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
+    'http://209.38.244.21/',
     'http://127.0.0.1:5173',
     # 'https://example.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
+    'http://209.38.244.21/',
     'http://127.0.0.1:5173',
     # 'https://example.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
+    'http://209.38.244.21/',
     'http://127.0.0.1:5173',
     # 'https://example.com',
 ]
