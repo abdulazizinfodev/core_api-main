@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    image: python:3.9
+    command: bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./your-django-app:/app
+    ports:
+      - "8000:8000"
+
+  bot:
+    container_name: bot
+    command: python3 bot/app.py
+    restart: always
+    build:
+      context: "."
+      dockerfile: Dockerfile
