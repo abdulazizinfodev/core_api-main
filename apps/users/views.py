@@ -9,10 +9,14 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from apps.users.forms import SignUpForm
 from apps.users.models import User, Code
 from apps.users.serializers import CodeSerializer, UserAvatarSerializer
+from django.views.decorators.csrf import csrf_exempt
 import random
 
 
 @api_view(['POST'])
+@authentication_classes([])
+@permission_classes([AllowAny])
+@csrf_exempt
 def signup(request):
     data = request.data
     form = SignUpForm({
