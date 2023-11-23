@@ -14,7 +14,7 @@ SECRET_KEY = "django-insecure-u+z1ng(w_!jc07a1&_wj45(rik78v0*wl3s6&logblm0%hmh8e
 
 DEBUG = False
 
-DOMAIN = "http://209.38.244.21/"
+DOMAIN = "http://139.59.155.240"
 
 
 ALLOWED_HOSTS = ["*"]
