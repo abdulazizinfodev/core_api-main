@@ -41,6 +41,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'storages',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + APPS + THIRD_PARTY_APPS
@@ -112,15 +113,44 @@ USE_I18N = True
 USE_TZ = True
 
 # STATIC
+# https://dj-spaces.fra1.digitaloceanspaces.com
 
-# settings.py
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
+from .cdn.conf import (
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    AWS_S3_SIGNATURE_VERSION,
+    AWS_STORAGE_BUCKET_NAME,
+    AWS_ENDPOINT_URL,
+    AWS_S3_OBJECT_PARAMETERS,
+    AWS_LOCATION,
+    DEFAULT_FILE_STORAGE,
+    STATICFILES_STORAGE,
+)
 
+AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+AWS_S3_ENDPOINT_URL = AWS_ENDPOINT_URL
+AWS_S3_OBJECT_PARAMETERS = AWS_S3_OBJECT_PARAMETERS
+AWS_LOCATION = AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+MEDIAFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+STATICFILES_STORAGE = STATICFILES_STORAGE
+DEFAULT_FILE_STORAGE = DEFAULT_FILE_STORAGE
 
 
 REST_FRAMEWORK = {
@@ -151,6 +181,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
     'http://209.38.244.21',
     'http://127.0.0.1:5173',
+    'http://127.0.0.1:8000',
     # 'https://example.com',
 ]
 
@@ -158,6 +189,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'http://209.38.244.21',
     'http://127.0.0.1:5173',
+    'http://127.0.0.1:8000',
     # 'https://example.com',
 ]
 
@@ -165,6 +197,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://209.38.244.21',
     'http://127.0.0.1:5173',
+    'http://127.0.0.1:8000',
     # 'https://example.com',
 ]
 
