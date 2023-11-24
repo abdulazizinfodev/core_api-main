@@ -121,6 +121,9 @@ USE_TZ = True
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 2000
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 2000
+
 from .cdn.conf import (
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
