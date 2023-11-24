@@ -29,7 +29,7 @@ class VideoApp(models.Model):
 
     def get_thumbnail(self):
         if self.video:
-            return str(settings.DOMAIN) + str(self.video.url)
+            return str(self.video.url)
 
     def __str__(self):
         return f"{self.modul} - {self.name}"

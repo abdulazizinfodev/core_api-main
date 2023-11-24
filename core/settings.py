@@ -10,11 +10,11 @@ ENVIRONMENT = env
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = "django-insecure-u+z1ng(w_!jc07a1&_wj45(rik78v0*wl3s6&logblm0%hmh8e"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = False
 
-DOMAIN = "http://139.59.155.240"
+DOMAIN = os.environ.get('DOMAIN')
 
 
 ALLOWED_HOSTS = ["*"]
