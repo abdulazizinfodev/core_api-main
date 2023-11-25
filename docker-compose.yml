@@ -22,5 +22,15 @@ services:
     depends_on:
       - django
 
+  bot:
+    container_name: bot
+    command: python3 bot/app.py
+    restart: always
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+
 volumes:
   static:
