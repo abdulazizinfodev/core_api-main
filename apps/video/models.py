@@ -6,11 +6,10 @@ domain = settings.DOMAIN
 
 class ModulClass(models.Model):
     name = models.CharField(max_length=250, unique=True)
-    all_videos = models.IntegerField(default=0, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.all_videos}"
+        return f"{self.name}"
 
     class Meta:
         verbose_name = 'Modul'

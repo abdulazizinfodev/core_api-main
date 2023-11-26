@@ -8,6 +8,12 @@ class ModulSerializer(serializers.ModelSerializer):
         model = ModulClass
         fields = ('id', 'name', 'all_videos',)
 
+    all_videos = serializers.SerializerMethodField()
+
+    def get_all_videos(self, obj):
+        module_videos = VideoApp.objects.filter(modul=obj)
+        return [video.name for video in module_videos]
+
 
 class CommentSerializer(serializers.ModelSerializer):
     created_by = UserReadSerializer(read_only=True)
