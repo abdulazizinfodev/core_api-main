@@ -84,16 +84,12 @@ class CommentCreate(APIView):
 
     def post(self, request, format=None):
         try:
-            data = request.data
-            print(data)
-            username = data['username']
-            videoId = data['videoId']
-            body = data['body']
+            videoId = request.data.get('videoId')
             video_id = int(videoId)
             video_marked = VideoApp.objects.get(id=video_id)
             if video_marked:
                 comment = Comment.objects.create(
-                    commented_by=username, comment=body)
+                    commented_by=request.user, comment=request.data.get('body'))
                 video_marked.comment.add(comment)
                 video_marked.save()
                 return Response({"data": "Created"}, status=status.HTTP_201_CREATED)

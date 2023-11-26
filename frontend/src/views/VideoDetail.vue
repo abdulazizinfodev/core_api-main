@@ -27,6 +27,7 @@ export default {
             errors: [],
             add_access: '',
             access_video: false,
+            body: '',
         }
     },
 
@@ -85,6 +86,23 @@ export default {
             } else {
                 this.toastStore.showToast(3000, "Please, Log In", 'Unauthorized', 'bg-red-500 text-white');
             }
+        },
+        submitForm(videoId) {
+            const config = {
+                headers: {
+                    'Authorization': `JWT ${localStorage.getItem('user.access')}`,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            };
+            axios
+                .post('/api/videos/create-comment/', { 'body': this.body, 'videoId': videoId }, config)
+                .then(response => {
+                    this.body = ''
+                })
+                .catch(error => {
+                    console.log('error', error)
+                })
         },
     }
 }
@@ -176,11 +194,11 @@ export default {
                     </div>
                 </div>
                 <div class="m-3 border-t"></div>
-                <form action="#" class="m-6 text-white">
+                <form v-on:submit.prevent="submitForm(video.id)" method="post" class="m-6 text-white">
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                         <div class="sm:col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-white">Fikirlar</label>
-                            <textarea id="description" rows="1" required
+                            <textarea id="description" v-model="body" rows="1" required
                                 class="block p-2.5 w-full text-sm text-white bg-gray-700 rounded-lg border border-gray-500 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Fikirlaringizni yozing..."></textarea>
                         </div>
