@@ -98,6 +98,7 @@ export default {
             axios
                 .post('/api/videos/create-comment/', { 'body': this.body, 'videoId': videoId }, config)
                 .then(response => {
+                    this.toastStore.showToast(3000, "Izoh mofaqqiyatli jo'natildi.", 'Izoh', 'bg-blue-700')
                     this.body = ''
                 })
                 .catch(error => {
@@ -197,7 +198,7 @@ export default {
                 <form v-on:submit.prevent="submitForm(video.id)" method="post" class="m-6 text-white">
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                         <div class="sm:col-span-2">
-                            <label for="description" class="block mb-2 text-sm font-medium text-white">Fikirlar</label>
+                            <label for="description" class="block mb-2 text-sm font-medium text-white">Izoh</label>
                             <textarea id="description" v-model="body" rows="1" required
                                 class="block p-2.5 w-full text-sm text-white bg-gray-700 rounded-lg border border-gray-500 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Fikirlaringizni yozing..."></textarea>
@@ -217,7 +218,7 @@ export default {
                 <template v-if="video.comment">
                     <div class="m-3 border-t"></div>
                     <h4 class="text-white ml-4 mr-4 text-2xl mb-4">Fikirlar va Savollar</h4>
-                    <div class="ml-4 mr-4 grid grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <div class="ml-4 mr-4 grid grid-cols-1 gap-x-4 gap-y-6 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                         <article v-for="com in video.comment" :key="com.id"
                             class="flex max-w-xl flex-col items-start justify-between bg-gray-600 rounded-lg p-4">
                             <div class="group relative">
