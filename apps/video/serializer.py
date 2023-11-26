@@ -24,7 +24,7 @@ from apps.users.serializers import UserReadSerializer
 class VideoAppSerializer(serializers.ModelSerializer):
     class Meta:
         model = VideoApp
-        fields = ('name', 'video', 'description',
+        fields = ('id', 'name', 'video', 'description',
                   'comment', 'created_at', 'marked_view')
 
 

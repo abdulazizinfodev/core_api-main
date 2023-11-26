@@ -16,12 +16,42 @@ export default {
 		}
 	},
 
+	data() {
+		return {
+			loading: true,
+			modeuls: [],
+		};
+	},
+
 	components: {
 		Toast,
 		RouterLink
 	},
 
+	mounted() {
+		this.getModuls()
+	},
+
 	methods: {
+		getModuls() {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json',
+					'Authorization': `JWT ${localStorage.getItem('user.access')}`,
+				}
+			};
+			axios
+				.get('/api/videos/moduls/', config)
+				.then(response => {
+					console.log(response.data)
+					this.modeuls = response.data['moduls']
+					this.loading = false
+				})
+				.catch(error => {
+					console.log('error', error)
+				})
+		},
 		logout() {
 			console.log('Log out')
 
@@ -49,13 +79,13 @@ export default {
 
 <template>
 	<template v-if="userStore.user.isAuthenticated && userStore.user.id">
-		<div class="antialiased bg-gray-50">
-			<nav class="bg-white border-b border-gray-200 px-4 fixed left-0 right-0 top-0 z-50 sm:hidden">
+		<div class="antialiased">
+			<nav class="px-4 py-1 bg-gray-800 fixed left-0 right-0 top-0 z-50">
 				<div class="flex flex-wrap justify-between items-center">
 					<div class="flex p-1 justify-start items-center">
 						<button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
 							aria-controls="default-sidebar" type="button"
-							class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+							class="inline-flex items-center p-2 ml-3 text-sm text-gray-300 rounded-lg sm:hidden hover:bg-gray-600 focus:outline-none focus:ring-2">
 							<span class="sr-only">Open sidebar</span>
 							<svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
 								xmlns="http://www.w3.org/2000/svg">
@@ -65,10 +95,10 @@ export default {
 							</svg>
 						</button>
 					</div>
-					<div class="flex items-center lg:order-2 sm:hidden">
+					<div class="flex items-center lg:order-2">
 						<!-- Notifications -->
 						<button type="button" data-dropdown-toggle="notification-dropdown"
-							class="p-1 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-gray-300 dark:focus:ring-gray-600">
+							class="p-1 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-gray-300 dark:focus:ring-gray-600">
 							<span class="sr-only">View notifications</span>
 							<!-- Bell icon -->
 							<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -87,7 +117,7 @@ export default {
 							</div>
 							<div>
 								<a href="#"
-									class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+									class="flex py-3 px-4 border-b hover:bg-gray-600 dark:hover:bg-gray-600 dark:border-gray-600">
 									<div class="flex-shrink-0">
 										<img class="w-11 h-11 rounded-full"
 											src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
@@ -118,7 +148,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+									class="flex py-3 px-4 border-b hover:bg-gray-600 dark:hover:bg-gray-600 dark:border-gray-600">
 									<div class="flex-shrink-0">
 										<img class="w-11 h-11 rounded-full"
 											src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
@@ -146,7 +176,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+									class="flex py-3 px-4 border-b hover:bg-gray-600 dark:hover:bg-gray-600 dark:border-gray-600">
 									<div class="flex-shrink-0">
 										<img class="w-11 h-11 rounded-full"
 											src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
@@ -174,7 +204,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+									class="flex py-3 px-4 border-b hover:bg-gray-600 dark:hover:bg-gray-600 dark:border-gray-600">
 									<div class="flex-shrink-0">
 										<img class="w-11 h-11 rounded-full"
 											src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
@@ -203,7 +233,7 @@ export default {
 										</div>
 									</div>
 								</a>
-								<a href="#" class="flex py-3 px-4 hover:bg-gray-100 dark:hover:bg-gray-600">
+								<a href="#" class="flex py-3 px-4 hover:bg-gray-600 dark:hover:bg-gray-600">
 									<div class="flex-shrink-0">
 										<img class="w-11 h-11 rounded-full"
 											src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-brown.png"
@@ -231,7 +261,7 @@ export default {
 								</a>
 							</div>
 							<a href="#"
-								class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:hover:underline">
+								class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-600 dark:bg-gray-600 dark:text-white dark:hover:underline">
 								<div class="inline-flex items-center">
 									<svg aria-hidden="true" class="mr-2 w-4 h-4 text-gray-500 dark:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -246,7 +276,7 @@ export default {
 						</div>
 						<!-- Apps -->
 						<button type="button" data-dropdown-toggle="apps-dropdown"
-							class="p-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-gray-300 dark:focus:ring-gray-600">
+							class="p-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-gray-300 dark:focus:ring-gray-600">
 							<span class="sr-only">View notifications</span>
 							<!-- Icon -->
 							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -264,7 +294,7 @@ export default {
 							</div>
 							<div class="grid grid-cols-3 gap-4 p-4">
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +305,7 @@ export default {
 									<div class="text-sm text-gray-900 dark:text-white">Sales</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -286,7 +316,7 @@ export default {
 									<div class="text-sm text-gray-900 dark:text-white">Users</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -297,7 +327,7 @@ export default {
 									<div class="text-sm text-gray-900 dark:text-white">Inbox</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -310,7 +340,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -323,7 +353,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -337,7 +367,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -353,7 +383,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -366,7 +396,7 @@ export default {
 									</div>
 								</a>
 								<a href="#"
-									class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+									class="block p-4 text-center rounded-lg hover:bg-gray-600 dark:hover:bg-gray-600 group">
 									<svg aria-hidden="true"
 										class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
 										fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -402,12 +432,12 @@ export default {
 							<ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
 								<li>
 									<a href="#"
-										class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My
+										class="block py-2 px-4 text-sm hover:bg-gray-600 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My
 										profile</a>
 								</li>
 								<li>
 									<a href="#"
-										class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account
+										class="block py-2 px-4 text-sm hover:bg-gray-600 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account
 										settings</a>
 								</li>
 							</ul>
@@ -469,11 +499,40 @@ export default {
 				</div>
 			</nav>
 			<aside id="default-sidebar"
-				class="fixed top-0 left-0 z-50 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0"
-				style="background-color: #22272e;" aria-label="Sidenav">
-				<div class="overflow-y-auto py-5 px-3 h-full">
+				class="fixed top-0 left-0 bg-gray-800 z-50 w-72 rounded-lg h-screen transition-transform -translate-x-full sm:translate-x-0"
+				aria-label="Sidenav">
+				<div class="overflow-y-auto py-1 px-3 h-full">
 					<ul class="space-y-1">
-						<li class="pt-15 md:hidden"></li>
+						<li class="py-2">
+							<span class="flex-1p-2 font-semibold text-gray-100 ml-3 text-center">MODULS</span>
+						</li>
+						<li v-for="modul in modeuls" :key="modul.id">
+							<a class="flex items-center p-2 text-base text-gray-300 bg-gray-700 font-semibold rounded-full group"
+								:aria-controls="'dropdown-pages-' + modul.id"
+								:data-collapse-toggle="'dropdown-pages-' + modul.id">
+								<svg class="ms-3 w-4 h-4 text-gray-300 transition duration-75" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2"
+										d="M1 5h18M1 5v14h18V5M1 5V1h18v4M5 5l3-4m1.215 4 3-4m1.215 4 3-4M8.007 8v8l5.416-4-5.416-4Z" />
+								</svg>
+								<span class="flex-1 ml-3 text-left whitespace-nowrap">{{ modul.name }}</span>
+								<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd"
+										d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+										clip-rule="evenodd"></path>
+								</svg>
+							</a>
+							<ul :id="'dropdown-pages-' + modul.id" class="hidden py-2 space-y-2">
+								<li v-for="video in modul.videos" :key="video.id">
+									<RouterLink :to="{ name: 'video-detail', params: { id: video.id } }"
+										class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-200 rounded-full transition group hover:bg-gray-700">
+										{{ video.name }}
+									</RouterLink>
+								</li>
+							</ul>
+						</li>
 						<li>
 							<RouterLink v-if="this.$route['fullPath'] === '/'" to="/"
 								class="flex items-center p-2 text-base text-gray-300 bg-gray-600 font-semibold rounded-full group">
@@ -492,58 +551,6 @@ export default {
 										d="M15.458 4a3 3 0 1 0-4.478 2.6A2.6 2.6 0 0 1 8.4 9H6.6a4.57 4.57 0 0 0-2.6.814v-3a3 3 0 1 0-2 0v8.368a3 3 0 1 0 2 0V13.6A2.607 2.607 0 0 1 6.6 11h1.8a4.6 4.6 0 0 0 4.548-4.049A3 3 0 0 0 15.458 4Z" />
 								</svg>
 								<span class="flex-1 ml-3 whitespace-nowrap">Cores</span>
-							</RouterLink>
-						</li>
-						<li>
-							<RouterLink v-if="this.$route['fullPath'] === '/about'" to="/about"
-								class="flex items-center p-2 text-base text-gray-300 bg-gray-600 font-semibold rounded-full group">
-								<svg class="ms-3 w-4 h-4 text-gray-300 transition duration-75" aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-									<path
-										d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z" />
-								</svg>
-								<span class="flex-1 ml-3 whitespace-nowrap">Wallet</span>
-							</RouterLink>
-							<RouterLink v-else to="/about"
-								class="flex items-center p-2 text-base text-gray-300 hover:bg-gray-600 font-semibold rounded-full group">
-								<svg class="ms-3 w-4 h-4 text-gray-300 transition duration-75" aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-									<path
-										d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z" />
-								</svg>
-								<span class="flex-1 ml-3 whitespace-nowrap">Wallet</span>
-							</RouterLink>
-						</li>
-						<li>
-							<RouterLink to="/"
-								class="flex items-center p-2 text-base text-gray-300 hover:bg-gray-600 font-semibold rounded-full group">
-								<svg class="ms-3 w-4 h-4 text-gray-300 transition duration-75" aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-									<path
-										d="M0 6v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6H0Zm13.457 6.707-2.5 2.5a1 1 0 0 1-1.414-1.414l.793-.793H5a1 1 0 0 1 0-2h5.336l-.793-.793a1 1 0 0 1 1.414-1.414l2.5 2.5a1 1 0 0 1 0 1.414ZM9.043.8a2.009 2.009 0 0 0-1.6-.8H2a2 2 0 0 0-2 2v2h11.443L9.043.8Z" />
-								</svg>
-
-								<span class="flex-1 ml-3 whitespace-nowrap">Exchenge</span>
-							</RouterLink>
-						</li>
-						<li>
-							<RouterLink v-if="this.$route['fullPath'] === '/shop'" to="/shop"
-								class="flex items-center p-2 text-base text-gray-300 bg-gray-600 font-semibold rounded-full group">
-								<svg class="ms-3 w-4 h-4 text-gray-300 transition duration-75" aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-									<path
-										d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
-								</svg>
-								<span class="flex-1 ml-3 whitespace-nowrap">Shop</span>
-							</RouterLink>
-							<RouterLink v-else to="/shop"
-								class="flex items-center p-2 text-base text-gray-300 hover:bg-gray-600 font-semibold rounded-full group">
-								<svg class="ms-3 w-4 h-4 text-gray-300 transition duration-75" aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-									<path
-										d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
-								</svg>
-								<span class="flex-1 ml-3 whitespace-nowrap">Shop</span>
 							</RouterLink>
 						</li>
 						<li>
@@ -580,8 +587,8 @@ export default {
 			<Toast />
 		</div>
 
-		<main class="md:ml-48">
-			<div class="pt-16 lg:hidden"></div>
+		<main class="md:ml-72 mt-4 md:mt-0">
+			<div class="pt-14"></div>
 			<RouterView />
 		</main>
 	</template>

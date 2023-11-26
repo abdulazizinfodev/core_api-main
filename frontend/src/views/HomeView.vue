@@ -225,53 +225,31 @@ export default defineComponent({
             </div>
         </section>
     </div>
-    <div class="pr-2 pb-2" v-else>
-        <section class="">
-            <div class="py-3 px-1 mx-1 w-full">
-                <p>
-                    {{ modeuls }}
-                </p>
-                <div class="grid grid-cols-2 gap-x-2 gap-y-2 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
-                    <div v-for="video in videos" :key="video.id" role="status"
-                        class="max-w-sm p-3 border border-gray-100 rounded shadow md:p-3">
-                        <div class="grid grid-cols-1">
-                            <RouterLink :to="{ name: 'video-detail', params: { id: video.id } }">
-                                <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                                    <img src="https://picsum.photos/200/200" alt="Model wearing plain black basic tee."
-                                        class="h-full w-full object-cover object-center">
-                                </div>
-                            </RouterLink>
-                        </div>
-                        <div class="mt-4 flex justify-between">
-                            <div>
-                                <h3 class="text-sm text-gray-700">
-                                    <RouterLink :to="{ name: 'video-detail', params: { id: video.id } }">
-                                        <span aria-hidden="true" class="inset-0"></span>
-                                        {{ video.name }}
-                                    </RouterLink>
-                                </h3>
-                                <p class="mt-1 text-xs text-gray-500"><s>$243</s></p>
-                            </div>
-                            <p class="text-xs font-medium me-3 text-gray-900">$42423</p>
-                        </div>
-                        <div class="h-2 rounded-full mb-3">
-                            <div class="flex items-center justify-center mt-2.5 mb-5">
-                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                    <path
-                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                                </svg>
-                                <span
-                                    class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">
-                                    3.0
-                                </span>
-                            </div>
-                        </div>
-                        <span class="sr-only">Loading...</span>
+    <section class="bg-gray-800 ml-4 mr-4">
+        <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+            <figure class="max-w-screen-md mx-auto">
+                <svg class="h-12 mx-auto mb-3 text-gray-400" viewBox="0 0 24 27" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"
+                        fill="currentColor" />
+                </svg>
+                <blockquote>
+                    <p class="text-2xl font-medium text-gray-100">"Flowbite is just awesome. It contains
+                        tons of predesigned components and pages starting from login screen to complex dashboard. Perfect
+                        choice for your next SaaS application."</p>
+                </blockquote>
+                <figcaption class="flex items-center justify-center mt-6 space-x-3">
+                    <img class="w-6 h-6 rounded-full"
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+                        alt="profile picture">
+                    <div class="flex items-center divide-x-2 divide-gray-500">
+                        <div class="pr-3 font-medium text-gray-100">Micheal Gough</div>
+                        <div class="pl-3 text-sm font-light text-gray-300">CEO at Google</div>
                     </div>
-                </div>
-            </div>
-        </section>
-    </div>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
 </template>
 
