@@ -25,8 +25,8 @@ export default {
                 <img class="w-20 h-20 rounded-full ms-2 transition duration-75" :src="userStore.user.avatar"
                     alt="user photo" />
                 <div class="min-w-0 px-3">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">{{ userStore.user.name }}</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ userStore.user.username }}</p>
+                    <p class="text-sm font-semibold leading-6 text-gray-100">{{ userStore.user.name }}</p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-100">{{ userStore.user.username }}</p>
                 </div>
             </div>
             <div class="items-start justify-start md:hidden">
@@ -36,8 +36,8 @@ export default {
                 </div>
                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <div class="min-w-0">
-                        <p class="text-sm font-semibold leading-6 text-gray-900">{{ userStore.user.name }}</p>
-                        <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ userStore.user.username }}</p>
+                        <p class="text-sm font-semibold leading-6 text-gray-100">{{ userStore.user.name }}</p>
+                        <p class="mt-1 truncate text-xs leading-5 text-gray-100">{{ userStore.user.username }}</p>
                     </div>
                 </div>
             </div>

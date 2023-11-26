@@ -20,8 +20,17 @@ from apps.users.serializers import UserReadSerializer
 #         module_videos = VideoApp.objects.filter(modul=obj)
 #         return [video.name for video in module_videos]
 
+class CommentSerializer(serializers.ModelSerializer):
+    created_by = UserReadSerializer(read_only=True)
+
+    class Meta:
+        model = Comment
+        fields = ('id', 'created_by', 'comment',)
+
 
 class VideoAppSerializer(serializers.ModelSerializer):
+    comment = CommentSerializer(many=True)
+
     class Meta:
         model = VideoApp
         fields = ('id', 'name', 'video', 'description',
@@ -35,14 +44,6 @@ class ModulSerializer(serializers.ModelSerializer):
     class Meta:
         model = ModulClass
         fields = ('id', 'name', 'videos', 'created_at')
-
-
-class CommentSerializer(serializers.ModelSerializer):
-    created_by = UserReadSerializer(read_only=True)
-
-    class Meta:
-        model = Comment
-        fields = ('id', 'created_by', 'comment',)
 
 
 # class VideoAppSerializer(serializers.ModelSerializer):

@@ -54,7 +54,7 @@ export default {
 
 <template>
     <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-1 lg:py-16 lg:px-6">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm" style="align-items: center;
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm text-gray-50" style="align-items: center;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;">
@@ -70,7 +70,7 @@ export default {
                     daqiqalik kodingizni oling.
                 </p>
             </div>
-            <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-2xl sm:p-6">
+            <div class="w-full max-w-sm p-4 bg-gray-100 border border-gray-100 rounded-lg shadow-2xl sm:p-6">
                 <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                     <div v-for="error in errors">
                         <div class="p-3 mb-2 text-xs text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"

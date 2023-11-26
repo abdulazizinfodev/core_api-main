@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-from .models import VideoApp, ModulClass
+from .models import VideoApp, ModulClass, Comment
 from .serializer import VideoAppSerializer, ModulSerializer
 from rest_framework.views import APIView
 from rest_framework import status, permissions
@@ -73,6 +73,35 @@ class VideoMark(APIView):
             video_marked.marked_view = True
             video_marked.save()
             return Response({"data": "Video marked as view"}, status=status.HTTP_202_ACCEPTED)
-        return Response(
-            {'error': 'Video ID must be an integer'},
-            status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(
+                {'error': 'Video ID must be an integer'},
+                status=status.HTTP_400_BAD_REQUEST)
+
+
+class CommentCreate(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, format=None):
+        try:
+            data = request.data
+            print(data)
+            username = data['username']
+            videoId = data['videoId']
+            body = data['body']
+            video_id = int(videoId)
+            video_marked = VideoApp.objects.get(id=video_id)
+            if video_marked:
+                comment = Comment.objects.create(
+                    commented_by=username, comment=body)
+                video_marked.comment += comment
+                video_marked.save()
+                return Response({"data": "Created"}, status=status.HTTP_201_CREATED)
+            else:
+                return Response(
+                    {'error': 'Video ID must be an integer'},
+                    status=status.HTTP_400_BAD_REQUEST)
+        except:
+            return Response(
+                {'error': 'Erorr'},
+                status=status.HTTP_400_BAD_REQUEST)

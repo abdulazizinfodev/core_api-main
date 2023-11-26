@@ -6,7 +6,7 @@ const store = useToastStore()
 
 <template>
     <div v-if="store.isVisible"
-        class="transition ease-in-out delay-500 duration-500 fixed z-40 top-14 flex items-center m-4 p-4 mb-4 text-sm text-blue-900 rounded-lg"
+        class="transition ease-in-out delay-500 duration-500 fixed z-50 top-0 flex items-center m-4 p-4 mb-4 text-sm text-white rounded-lg"
         :class="store.classes" role="alert">
         <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             fill="currentColor" viewBox="0 0 20 20">
