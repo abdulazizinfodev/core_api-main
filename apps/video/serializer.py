@@ -3,12 +3,18 @@ from .models import VideoApp, ModulClass, Comment
 from apps.users.serializers import UserReadSerializer
 
 
+# class ModulSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ModulClass
+#         fields = ('id', 'name',)
+
+
 class ModulSerializer(serializers.ModelSerializer):
+    all_videos = serializers.SerializerMethodField()
+
     class Meta:
         model = ModulClass
         fields = ('id', 'name', 'all_videos',)
-
-    all_videos = serializers.SerializerMethodField()
 
     def get_all_videos(self, obj):
         module_videos = VideoApp.objects.filter(modul=obj)
