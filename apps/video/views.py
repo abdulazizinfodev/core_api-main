@@ -94,7 +94,7 @@ class CommentCreate(APIView):
             if video_marked:
                 comment = Comment.objects.create(
                     commented_by=username, comment=body)
-                video_marked.comment += comment
+                video_marked.comment.add(comment)
                 video_marked.save()
                 return Response({"data": "Created"}, status=status.HTTP_201_CREATED)
             else:

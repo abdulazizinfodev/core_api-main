@@ -19,4 +19,4 @@ python manage.py createsuperuser
 test
 test2
 
-{"username": "874354497", "first_name": "first_name", "last_name": "last_name", "password": "fjlahs8734hjdf923HGds87432kjdsKJh"}
+{"username":"874354497","first_name":"first_name", "last_name":"last_name","password":"fjlJGahs8734hjdf923HGds87432kjdsKJh"}
