@@ -7,7 +7,7 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://139.59.155.240'
+axios.defaults.baseURL = 'https://malumot.store'
 
 const app = createApp(App)
 
