@@ -16,6 +16,7 @@ import random
 @api_view(['POST'])
 def signup(request):
     data = request.data
+    print(data)
     form = SignUpForm({
         'username': data.get('username'),
         'first_name': data.get('first_name'),
