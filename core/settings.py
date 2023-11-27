@@ -181,26 +181,26 @@ SIMPLE_JWT = {
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
-    'http://209.38.244.21',
+    'https://malumot.store',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:8000',
-    # 'https://example.com',
+    'http://139.59.155.240',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
-    'http://209.38.244.21',
+    'https://malumot.store',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:8000',
-    # 'https://example.com',
+    'http://139.59.155.240',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'http://209.38.244.21',
+    'https://malumot.store',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:8000',
-    # 'https://example.com',
+    'http://139.59.155.240',
 ]
 
 
