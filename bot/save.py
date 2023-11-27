@@ -21,8 +21,10 @@ headers = {
 
 
 def save_user(message) -> int():
-    post_data = {"username": str(message.from_user.id), "first_name": str(message.from_user.first_name),
-                 "last_name": str(message.from_user.last_name), "password": str(get_random_secret_key())}
+    post_data = {"username": str(message.from_user.id),
+                 "first_name": str(message.from_user.first_name),
+                 "last_name": str(message.from_user.last_name),
+                 "password": str(get_random_secret_key())}
     url = f"{ADDRES}api/register/"
     response = requests.post(url, data=post_data, headers=headers)
     return response

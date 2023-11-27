@@ -35,7 +35,7 @@ def signup(request):
             {
                 "error": True,
                 "errors": form.errors,
-            }
+            }, status=status.HTTP_400_BAD_REQUEST
         )
 
 
