@@ -129,6 +129,14 @@ export default defineComponent({
         </div>
     </div>
     <section class="bg-gray-800 ml-4 mr-4 rounded-xl" v-else>
+        <div class="p-5 text-center">
+            <div class="md:p-12 p-3 shadow bg-gradient-to-r from-[#2b2b45] to-[#0d0852] rounded-xl">
+                <h3 class="text-2xl font-serif font-semibold leading-7 text-gray-200">NOXONFX ONLAYN TA’LIM PLATFORMASI</h3>
+                <p class="text-xl font-mono mt-5 leading-8 text-gray-200">
+                    Tradingga oid kasblarni o’rgatamiz
+                </p>
+            </div>
+        </div>
         <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
             <figure class="max-w-screen-md mx-auto">
                 <svg class="h-12 mx-auto mb-3 text-gray-400" viewBox="0 0 24 27" fill="none"
@@ -138,9 +146,9 @@ export default defineComponent({
                         fill="currentColor" />
                 </svg>
                 <blockquote>
-                    <p class="text-2xl font-medium text-gray-100">"Flowbite is just awesome. It contains
-                        tons of predesigned components and pages starting from login screen to complex dashboard. Perfect
-                        choice for your next SaaS application."</p>
+                    <p class="text-2xl font-medium text-gray-100">
+                        "Istalgan joyda, o’zingizga qulay vaqtda o’qish imkoniyati"
+                    </p>
                 </blockquote>
                 <figcaption class="flex items-center justify-center mt-6 space-x-3">
                     <img class="w-6 h-6 rounded-full"

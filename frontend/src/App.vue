@@ -154,16 +154,10 @@ export default {
 								<li v-for="video in modul.videos" :key="video.id">
 									<a :href="`/video/${video.id}`"
 										class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-200 rounded-full transition group hover:bg-gray-700">
-										<svg v-if="video.marked_view | video.id === 1" class="mr-2 w-4 h-4"
-											aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-											viewBox="0 0 20 20">
+										<svg class="mr-2 w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+											fill="currentColor" viewBox="0 0 14 16">
 											<path
-												d="M15.077.019a4.658 4.658 0 0 0-4.083 4.714V7H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-1.006V4.68a2.624 2.624 0 0 1 2.271-2.67 2.5 2.5 0 0 1 2.729 2.49V8a1 1 0 0 0 2 0V4.5A4.505 4.505 0 0 0 15.077.019ZM9 15.167a1 1 0 1 1-2 0v-3a1 1 0 1 1 2 0v3Z" />
-										</svg>
-										<svg v-else class="w-4 h-4 mr-2" aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-											<path
-												d="M14 7h-1.5V4.5a4.5 4.5 0 1 0-9 0V7H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Zm-5 8a1 1 0 1 1-2 0v-3a1 1 0 1 1 2 0v3Zm1.5-8h-5V4.5a2.5 2.5 0 1 1 5 0V7Z" />
+												d="M0 .984v14.032a1 1 0 0 0 1.506.845l12.006-7.016a.974.974 0 0 0 0-1.69L1.506.139A1 1 0 0 0 0 .984Z" />
 										</svg>
 										{{ video.name }}
 									</a>
