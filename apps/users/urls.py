@@ -4,5 +4,5 @@ from apps.users.views import *
 
 urlpatterns = [
     path('', signup),
-    path('activate-user/', activate_user),
+    path('activate-user/<int:userID>/', activate_user),
 ]

@@ -35,11 +35,11 @@ def signup(request):
 
 
 @api_view(['POST'])
-def activate_user(request):
+def activate_user(request, userID):
     data = request.data
     try:
         user_id = data.get('username')
-        user = User.objects.get(username=user_id)
+        user = User.objects.get(username=str(userID))
         if user.is_active:
             if not Code.objects.filter(user=user).exists():
                 code_default = random.randint(10000, 99999)
