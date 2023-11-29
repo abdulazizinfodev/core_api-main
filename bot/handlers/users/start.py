@@ -6,11 +6,7 @@ import json
 from aiogram import types
 
 
-@dp.message_handler(Command('start'))
-async def show_menu1(message: Message):
-    usr = save_user(message)
-    if usr.status_code == 201:
-        text_info = """
+text_info = """
 Assalomu alaykum! NOXONFX UZ botga xush kelibsiz!
 Keling sizni xizmatlarimiz bilan tanishtiraman.
 
@@ -42,6 +38,12 @@ Telegram username:
 Telefon nomer:
 Taklif yoki Murojaatingiz:
 """
+
+
+@dp.message_handler(Command('start'))
+async def show_menu1(message: Message):
+    usr = save_user(message)
+    if usr.status_code == 201:
         await message.reply({text_info}, parse_mode=types.ParseMode.HTML)
     else:
         await message.reply(f"Ushbu hisob allaqachon yaratilgan. \n\n{text_info}", parse_mode=types.ParseMode.HTML)
