@@ -28,3 +28,4 @@ async def show_menu2(message: Message):
     else:
         usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Xolat:</b> siz to'lov qilmagansiz!")
+    await message.reply(f"{usr}")
