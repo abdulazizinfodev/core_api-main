@@ -51,7 +51,7 @@ async def login_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     elif usr.status_code == 400:
         await update.message.reply_text(f"<b>Xatolik:</b> {usr.text}", parse_mode=ParseMode.HTML)
     else:
-        await update.message.reply_text("<b>Xolat:</b> siz to'lov qilmagansiz!")
+        await update.message.reply_text("<b>Xolat:</b> siz to'lov qilmagansiz!", parse_mode=ParseMode.HTML)
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -63,7 +63,6 @@ async def post_init(application: Application):
         BotCommand("/start", "Boshlash"),
         BotCommand("/login", "Kirish"),
         BotCommand("/help", "Yordam xabarini ko'rsatish"),
-        BotCommand("/developer", "Bot dasturchisi"),
     ])
 
 
