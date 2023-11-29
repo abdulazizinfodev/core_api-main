@@ -3,6 +3,7 @@ from aiogram.types import Message
 from loader import dp
 from save import save_user, activate_user
 import json
+from aiogram import types
 
 
 @dp.message_handler(Command('start'))
@@ -41,9 +42,9 @@ Telegram username:
 Telefon nomer:
 Taklif yoki Murojaatingiz:
 """
-        await message.reply({text_info})
+        await message.reply({text_info}, parse_mode=types.ParseMode.HTML)
     else:
-        await message.reply(f"Ushbu hisob allaqachon yaratilgan. \n\n{text_info}")
+        await message.reply(f"Ushbu hisob allaqachon yaratilgan. \n\n{text_info}", parse_mode=types.ParseMode.HTML)
 
 
 @dp.message_handler(Command('kirish'))
