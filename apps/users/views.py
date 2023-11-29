@@ -1,15 +1,9 @@
-from rest_framework import status, viewsets
-from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework import status
 from rest_framework.response import Response
-from django.db.models import Q
-from django.shortcuts import get_object_or_404
-from apps.general.authentication import get_user_auth_data
-from django.http import JsonResponse
-from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
+from rest_framework.decorators import api_view
 from apps.users.forms import SignUpForm
 from apps.users.models import User, Code
-from apps.users.serializers import CodeSerializer, UserAvatarSerializer
+from apps.users.serializers import CodeSerializer
 import random
 
 
@@ -44,7 +38,7 @@ def signup(request):
 def activate_user(request):
     data = request.data
     try:
-        user_id = data['username']
+        user_id = data.get('username')
         user = User.objects.get(username=user_id)
         if user.is_active:
             if not Code.objects.filter(user=user).exists():

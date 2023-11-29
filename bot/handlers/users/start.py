@@ -1,9 +1,7 @@
-import requests
 from aiogram.dispatcher.filters import Command
 from aiogram.types import Message
-from loader import dp, bot
+from loader import dp
 from save import save_user, activate_user
-from data.config import ADDRES
 import json
 
 
@@ -20,13 +18,10 @@ async def show_menu1(message: Message):
 
 @dp.message_handler(Command('kirish'))
 async def show_menu2(message: Message):
-    usr = activate_user(message)
+    usr = activate_user(message.from_user.id)
     if usr.status_code == 200:
         usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Kod:</b> {usr_txt}")
-    elif usr.status_code == 400:
-        usr_txt = json.loads(usr.text)
-        await message.reply(f"<b>Xolat:</b> topilmadi {usr_txt} ")
     else:
         usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Xolat:</b> siz to'lov qilmagansiz!")
