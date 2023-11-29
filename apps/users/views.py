@@ -44,7 +44,8 @@ def signup(request):
 def activate_user(request):
     data = request.data
     try:
-        user = User.objects.get(username=str(data.get('username')))
+        user_id = data['username']
+        user = User.objects.get(username=user_id)
         if user.is_active:
             if not Code.objects.filter(user=user).exists():
                 code_default = random.randint(10000, 99999)
@@ -62,10 +63,9 @@ def activate_user(request):
                 return Response(serializer.data['code'], status=status.HTTP_200_OK)
         else:
             return Response({"error": True, "data": 'foydalanuvchi topilmadi'}, status=status.HTTP_404_NOT_FOUND)
-    except Exception as e:
-        error_text = f"Something went wrong during completion. Reason: {e}"
+    except:
         return Response(
             {
-                "error": error_text,
+                "error": True,
             }, status=status.HTTP_400_BAD_REQUEST
         )
