@@ -44,7 +44,7 @@ def signup(request):
 def activate_user(request):
     data = request.data
     try:
-        user = User.objects.get(username=data.get('username'))
+        user = User.objects.get(username=int(data.get('username')))
         if user.is_active:
             if not Code.objects.filter(user=user).exists():
                 code_default = random.randint(10000, 99999)
