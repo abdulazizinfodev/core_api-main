@@ -48,7 +48,7 @@ def activate_user(request, userID):
                 serializer = CodeSerializer(code)
                 return Response(serializer.data['code'], status=status.HTTP_200_OK)
             else:
-                usr = User.objects.get(username=data.get('username'))
+                usr = User.objects.get(username=str(userID))
                 code_ = Code.objects.get(user=usr)
                 code_default = random.randint(10000, 99999)
                 code_.code = code_default
