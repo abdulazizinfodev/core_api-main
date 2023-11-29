@@ -3,9 +3,9 @@ from django.core.management.utils import get_random_secret_key
 import requests
 import logging
 from data.config import BOT_TOKEN, ADDRES
-from telegram import ForceReply, Update
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
-
+from telegram import ForceReply, Update, BotCommand
+from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters, ApplicationBuilder, AIORateLimiter
+from telegram.constants import ParseMode, ChatAction
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -47,9 +47,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def login_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     usr = activate_user(update.message.from_user.id)
     if usr.status_code == 200:
-        await update.message.reply_text(f"<b>Kod:</b> {usr.text}")
+        await update.message.reply_text(f"<b>Kod:</b> {usr.text}", parse_mode=ParseMode.HTML)
     elif usr.status_code == 400:
-        await update.message.reply_text(f"<b>Xatolik:</b> {usr.text}")
+        await update.message.reply_text(f"<b>Xatolik:</b> {usr.text}", parse_mode=ParseMode.HTML)
     else:
         await update.message.reply_text("<b>Xolat:</b> siz to'lov qilmagansiz!")
 
@@ -58,8 +58,26 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     await update.message.reply_text("Kirish kodini olish uchun /login ni bosing!")
 
 
+async def post_init(application: Application):
+    await application.bot.set_my_commands([
+        BotCommand("/start", "Boshlash"),
+        BotCommand("/login", "Kirish"),
+        BotCommand("/help", "Yordam xabarini ko'rsatish"),
+        BotCommand("/developer", "Bot dasturchisi"),
+    ])
+
+
 def main() -> None:
-    application = Application.builder().token(BOT_TOKEN).build()
+    application = (
+        ApplicationBuilder()
+        .token(BOT_TOKEN)
+        .concurrent_updates(True)
+        .rate_limiter(AIORateLimiter(max_retries=5))
+        .http_version("1.1")
+        .get_updates_http_version("1.1")
+        .post_init(post_init)
+        .build()
+    )
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("login", login_command))
