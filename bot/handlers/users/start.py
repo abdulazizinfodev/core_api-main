@@ -18,12 +18,12 @@ async def show_menu1(message: Message):
 async def show_menu2(message: Message):
     usr = activate_user(message.from_user.id)
     if usr.status_code == 200:
-        usr_txt = json.loads(usr.text)
-        await message.reply(f"<b>Kod:</b> {usr_txt}")
+        # usr_txt = json.loads(usr.text)
+        await message.reply(f"<b>Kod:</b> {usr.text}")
     elif usr.status_code == 400:
-        usr_txt = json.loads(usr.text)
-        await message.reply(usr_txt)
+        # usr_txt = json.loads(usr.text)
+        await message.reply(usr.text)
     else:
-        usr_txt = json.loads(usr.text)
+        # usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Xolat:</b> siz to'lov qilmagansiz!")
-    await message.reply(f"{usr}")
+    # await message.reply(f"{usr.text}")
