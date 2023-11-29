@@ -24,8 +24,8 @@ def save_user(message) -> int():
     return response
 
 
-def activate_user(id):
-    post_data = {"username": str(id)}
-    url = f'{ADDRES}api/register/activate-user/'
+def activate_user(message):
+    post_data = {"username": str(message.from_user.id)}
+    url = f"{ADDRES}api/register/activate-user/"
     response = requests.post(url, data=post_data)
     return response

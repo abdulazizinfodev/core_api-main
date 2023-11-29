@@ -21,6 +21,7 @@ class LoginSerializer(serializers.Serializer):
             user_ = usr.username
             pass_word_ = usr.pass_word
             user = authenticate(username=user_, password=pass_word_)
+            user.is_active = True
             user.save()
             if not user:
                 raise serializers.ValidationError(

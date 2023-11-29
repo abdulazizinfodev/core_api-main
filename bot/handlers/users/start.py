@@ -20,7 +20,7 @@ async def show_menu1(message: Message):
 
 @dp.message_handler(Command('kirish'))
 async def show_menu2(message: Message):
-    usr = activate_user(message.from_user.id)
+    usr = activate_user(message)
     if usr.status_code == 200:
         usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Kod:</b> {usr_txt}")
