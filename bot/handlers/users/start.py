@@ -9,10 +9,8 @@ import json
 async def show_menu1(message: Message):
     usr = save_user(message)
     if usr.status_code == 201:
-        usr_txt = usr.text
-        await message.reply(f"<b>Status:</b> hisobingiz mafaqqiyatli yaratildi.")
+        await message.reply(f"<b>Xolat:</b> hisobingiz mafaqqiyatli yaratildi.")
     else:
-        usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Xolat:</b> ushbu hisob allaqachon yaratilgan.")
 
 
@@ -26,6 +24,5 @@ async def show_menu2(message: Message):
         usr_txt = json.loads(usr.text)
         await message.reply(usr_txt)
     else:
-        usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Xolat:</b> siz to'lov qilmagansiz!")
     await message.reply(f"{usr}")
