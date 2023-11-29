@@ -45,7 +45,7 @@ def activate_user(request):
     try:
         user_id = data.get('username')
         user = User.objects.get(username=user_id)
-        if user.is_active:
+        if user.is_active == True:
             if not Code.objects.filter(user=user).exists():
                 code_default = random.randint(10000, 99999)
                 code = Code.objects.create(user=user, code=code_default)
@@ -59,8 +59,10 @@ def activate_user(request):
                 code_.save()
                 serializer = CodeSerializer(code_)
                 return Response(serializer.data['code'], status=status.HTTP_200_OK)
-        else:
+        elif user.is_active == False:
             return Response({"error": True, "data": 'foydalanuvchi topilmadi'}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            pass
     except Exception as e:
         return Response(
             {
