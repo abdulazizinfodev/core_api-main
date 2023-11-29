@@ -22,6 +22,9 @@ async def show_menu2(message: Message):
     if usr.status_code == 200:
         usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Kod:</b> {usr_txt}")
+    elif usr.status_code == 400:
+        usr_txt = json.loads(usr.text)
+        await message.reply(usr_txt)
     else:
         usr_txt = json.loads(usr.text)
         await message.reply(f"<b>Xolat:</b> siz to'lov qilmagansiz!")
