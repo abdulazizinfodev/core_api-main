@@ -199,24 +199,30 @@ SIMPLE_JWT = {
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
     'https://malumot.store',
-    'http://127.0.0.1:5173',
-    'http://127.0.0.1:8000',
+    'http://noxonfx-platform.com',
+    'https://www.noxonfx-platform.com',
+    'https://noxonfx-platform.com',
+    'http://138.68.90.215',
     'http://139.59.155.240',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'https://malumot.store',
-    'http://127.0.0.1:5173',
-    'http://127.0.0.1:8000',
+    'http://noxonfx-platform.com',
+    'https://www.noxonfx-platform.com',
+    'https://noxonfx-platform.com',
+    'http://138.68.90.215',
     'http://139.59.155.240',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'https://malumot.store',
-    'http://127.0.0.1:5173',
-    'http://127.0.0.1:8000',
+    'http://noxonfx-platform.com',
+    'https://www.noxonfx-platform.com',
+    'https://noxonfx-platform.com',
+    'http://138.68.90.215',
     'http://139.59.155.240',
 ]
 
