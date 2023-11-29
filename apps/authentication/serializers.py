@@ -30,7 +30,7 @@ class LoginSerializer(serializers.Serializer):
             if not user.is_active:
                 raise serializers.ValidationError('User is deactivated.')
 
-            return {'user': user}
+            return {"user": user}
         except:
             raise serializers.ValidationError(
                 'Incorrect username or password.')

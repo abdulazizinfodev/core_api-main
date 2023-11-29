@@ -43,29 +43,21 @@ def signup(request):
 @api_view(['POST'])
 def activate_user(request):
     data = request.data
-    try:
-        user_id = data.get('username')
-        user = User.objects.get(username=str(user_id))
-        if user.is_active:
-            if not Code.objects.filter(user=user).exists():
-                code_default = random.randint(10000, 99999)
-                code = Code.objects.create(user=user, code=code_default)
-                code.save()
-                serializer = CodeSerializer(code)
-                return Response(serializer.data['code'], status=status.HTTP_200_OK)
-            else:
-                usr = User.objects.get(username=data.get('username'))
-                code_ = Code.objects.get(user=usr)
-                code_default = random.randint(10000, 99999)
-                code_.code = code_default
-                code_.save()
-                serializer = CodeSerializer(code_)
-                return Response(serializer.data['code'], status=status.HTTP_200_OK)
+    user = User.objects.get(username=data.get('username'))
+    if user.is_active:
+        if not Code.objects.filter(user=user).exists():
+            code_default = random.randint(10000, 99999)
+            code = Code.objects.create(user=user, code=code_default)
+            code.save()
+            serializer = CodeSerializer(code)
+            return Response(serializer.data['code'], status=status.HTTP_200_OK)
         else:
-            return Response({"error": True, "data": 'foydalanuvchi topilmadi'}, status=status.HTTP_404_NOT_FOUND)
-    except:
-        return Response(
-            {
-                "error": True,
-            }, status=status.HTTP_400_BAD_REQUEST
-        )
+            usr = User.objects.get(username=data.get('username'))
+            code_ = Code.objects.get(user=usr)
+            code_default = random.randint(10000, 99999)
+            code_.code = code_default
+            code_.save()
+            serializer = CodeSerializer(code_)
+            return Response(serializer.data['code'], status=status.HTTP_200_OK)
+    else:
+        return Response({"error": True, "data": 'foydalanuvchi topilmadi'}, status=status.HTTP_404_NOT_FOUND)
