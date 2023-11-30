@@ -106,11 +106,14 @@ POSTGRES_PORT = os.environ.get("POSTGRES_PORT")
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        "NAME": POSTGRES_DB,
-        "USER": POSTGRES_USER,
-        "PASSWORD": POSTGRES_PASSWORD,
-        "HOST": POSTGRES_HOST,
-        "PORT": POSTGRES_PORT,
+        'NAME': 'defaultdb',
+        'USER': 'doadmin',
+        'PASSWORD': 'AVNS_deH-1QB8NBefcapSkSE',
+        'HOST': 'db-postgresql-fra1-85003-do-user-15189080-0.c.db.ondigitalocean.com',
+        'PORT': '25060',
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
     }
 }
 
