@@ -32,13 +32,15 @@ Tariflar uchun to'lov qilib adminga telegram username, screenshot (chek)ni admin
 Taklif va Murojaat uchun adminga quyidagi 
 forma shaklida murojat qiling:
 
-👇 Iltimos Formani to'ldiring 👇
+Iltimos Adminga Murojat Qilishda Formani Quyidagicha To'ldiring, Botga yubormang!
 
 Ism va Familya:
 Telegram username:
 Telefon nomer:
 Taklif yoki Murojaatingiz:
 ```
+
+To'lov qilib /kirish ni bosib kirish kodini oling va platformaga kiring.
 """
 
 
