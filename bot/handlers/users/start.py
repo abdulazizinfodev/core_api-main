@@ -44,9 +44,9 @@ Taklif yoki Murojaatingiz:
 async def show_menu1(message: Message):
     usr = save_user(message)
     if usr.status_code == 201:
-        await message.reply({text_info}, parse_mode=types.ParseMode.HTML)
+        await message.reply({text_info}, parse_mode=types.ParseMode.MARKDOWN)
     else:
-        await message.reply(f"Ushbu hisob allaqachon yaratilgan. \n\n{text_info}", parse_mode=types.ParseMode.HTML)
+        await message.reply(f"Ushbu hisob allaqachon yaratilgan. \n\n{text_info}", parse_mode=types.ParseMode.MARKDOWN)
 
 
 @dp.message_handler(Command('kirish'))
