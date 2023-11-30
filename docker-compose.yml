@@ -8,8 +8,6 @@ services:
     volumes:
       - ./staticfiles:/code/staticfiles
       - ./mediafiles:/code/mediafiles
-    depends_on:
-      - db
 
   nginx:
     image: nginx:latest
@@ -24,15 +22,6 @@ services:
     depends_on:
       - django
 
-  db:
-    image: postgres:15
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=hello_django
-      - POSTGRES_PASSWORD=hello_django
-      - POSTGRES_DB=hello_django_dev
-
   bot:
     container_name: bot
     command: python3 bot/app.py
@@ -44,5 +33,4 @@ services:
       - "8080:80"
 
 volumes:
-  postgres_data:
   static:
