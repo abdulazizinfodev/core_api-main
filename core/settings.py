@@ -103,7 +103,7 @@ else:
             'NAME': 'myproject',
             'USER': 'myprojectuser',
             'PASSWORD': 'password',
-            'HOST': 'localhost',
+            'HOST': 'postgres',
             'PORT': '',
         }
     }
