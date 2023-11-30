@@ -29,7 +29,7 @@ magic-filter==1.0.12
 multidict==6.0.4
 mutagen==1.45.1
 oauthlib==3.2.2
-Pillow==8.1.2
+Pillow
 python-telegram-bot[rate-limiter]==20.1
 psycopg2-binary
 pycparser==2.21
