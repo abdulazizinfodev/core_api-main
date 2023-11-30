@@ -26,6 +26,7 @@ Toshkent   ICT: +998 90 965 69 96
 Tariflar uchun to'lov qilib adminga telegram username, screenshot (chek)ni adminlarimizdan biriga yuboring!
 ⚠️⚠️⚠️
 
+```
 @noxonfx_admin
 
 Taklif va Murojaat uchun adminga quyidagi 
@@ -37,6 +38,7 @@ Ism va Familya:
 Telegram username:
 Telefon nomer:
 Taklif yoki Murojaatingiz:
+```
 """
 
 
