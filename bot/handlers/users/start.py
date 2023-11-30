@@ -22,11 +22,11 @@ Toshkent Filial: +998 95 9 80 51 11
 Farg'ona  Filial: +998 95 016 69 68
 Toshkent   ICT: +998 90 965 69 96
 
+```
 ⚠️⚠️⚠️
 Tariflar uchun to'lov qilib adminga telegram username, screenshot (chek)ni adminlarimizdan biriga yuboring!
 ⚠️⚠️⚠️
 
-```
 @noxonfx_admin
 
 Taklif va Murojaat uchun adminga quyidagi 
@@ -46,7 +46,7 @@ Taklif yoki Murojaatingiz:
 async def show_menu1(message: Message):
     usr = save_user(message)
     if usr.status_code == 201:
-        await message.reply({text_info}, parse_mode=types.ParseMode.MARKDOWN)
+        await message.reply(text_info, parse_mode=types.ParseMode.MARKDOWN)
     else:
         await message.reply(f"Ushbu hisob allaqachon yaratilgan. \n\n{text_info}", parse_mode=types.ParseMode.MARKDOWN)
 
