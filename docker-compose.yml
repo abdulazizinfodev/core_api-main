@@ -8,6 +8,8 @@ services:
     volumes:
       - ./staticfiles:/code/staticfiles
       - ./mediafiles:/code/mediafiles
+    depends_on:
+      - db
 
   nginx:
     image: nginx:latest
@@ -42,4 +44,5 @@ services:
       - "8080:80"
 
 volumes:
+  postgres_data:
   static:
