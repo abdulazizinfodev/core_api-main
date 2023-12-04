@@ -5,7 +5,7 @@ from apps.users.models import User, Code
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'first_name', 'last_name', 'is_active',)
-    list_display_links = ('username', 'is_active',)
+    list_display_links = ('username',)
     list_editable = ('is_active',)
     list_filter = ('username', 'is_active',)
 
