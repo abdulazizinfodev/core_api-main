@@ -37,6 +37,9 @@ class User(AbstractUser):
         else:
             return f"{self.first_name}"
 
+    def __str__(self) -> str:
+        return str(f"{self.username} {self.first_name} {self.last_name}")
+
     def avatar(self):
         if self.img:
             return str(self.img.url)
